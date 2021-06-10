@@ -33,9 +33,12 @@ class PopularFragment : Fragment() {
         }.attach()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding.viewPager.adapter = null
         _fragmentPopularBinding = null
     }
+
+
 
 }

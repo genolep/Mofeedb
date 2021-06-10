@@ -18,15 +18,15 @@ class MovieFragment : Fragment() {
     private val viewModel: MovieViewModel by viewModel()
 
     private var _fragmentMovieBinding: FragmentMovieBinding? = null
-    private val binding get() = _fragmentMovieBinding!!
+    private val binding get() = _fragmentMovieBinding
     private lateinit var movieAdapter: MovieAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): View? {
         _fragmentMovieBinding = FragmentMovieBinding.inflate(layoutInflater, container, false)
-        return binding.root
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -42,19 +42,19 @@ class MovieFragment : Fragment() {
             if (movies != null) {
                 when (movies) {
                     is Resource.Loading -> {
-                        binding.progressBar.visibility = View.VISIBLE
-                        binding.tvError.visibility = View.GONE
+                        binding?.progressBar?.visibility = View.VISIBLE
+                        binding?.tvError?.visibility = View.GONE
 
                     }
                     is Resource.Success -> {
-                        binding.progressBar.visibility = View.GONE
-                        binding.tvError.visibility = View.GONE
+                        binding?.progressBar?.visibility = View.GONE
+                        binding?.tvError?.visibility = View.GONE
 
                         movieAdapter.setMovie(movies.data)
                     }
                     is Resource.Error -> {
-                        binding.progressBar.visibility = View.GONE
-                        binding.tvError.text = movies.message
+                        binding?.progressBar?.visibility = View.GONE
+                        binding?.tvError?.text = movies.message
                     }
                 }
             }
@@ -68,16 +68,18 @@ class MovieFragment : Fragment() {
             intent.putExtra(DetailMovieActivity.EXTRA_MOVIE, selectedData)
             startActivity(intent)
         }
-        with(binding.rvMovie) {
-            this.layoutManager = LinearLayoutManager(context)
-            this.setHasFixedSize(true)
-            this.adapter = movieAdapter
+        with(binding?.rvMovie) {
+            this?.layoutManager = LinearLayoutManager(context)
+            this?.setHasFixedSize(true)
+            this?.adapter = movieAdapter
         }
     }
-
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding?.rvMovie?.adapter = null
         _fragmentMovieBinding = null
+
     }
+
 
 }

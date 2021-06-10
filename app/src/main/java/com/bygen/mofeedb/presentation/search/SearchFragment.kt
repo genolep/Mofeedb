@@ -17,15 +17,15 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchFragment : Fragment() {
     private var _fragmentSearchBinding: FragmentSearchBinding? = null
-    private val binding get() = _fragmentSearchBinding!!
+    private val binding get() = _fragmentSearchBinding
     private val searchViewModel: SearchViewModel by viewModel()
     private lateinit var searchAdapter: SearchAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): View? {
         _fragmentSearchBinding = FragmentSearchBinding.inflate(layoutInflater, container, false)
-        return binding.root
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -43,24 +43,24 @@ class SearchFragment : Fragment() {
             if (searchResult != null) {
                 when (searchResult) {
                     is Resource.Loading -> {
-                        binding.progressBar.visibility = View.VISIBLE
-                        binding.emptySearch.visibility = View.GONE
+                        binding?.progressBar?.visibility = View.VISIBLE
+                        binding?.emptySearch?.visibility = View.GONE
                     }
                     is Resource.Success -> {
-                        binding.progressBar.visibility = View.GONE
-                        binding.emptySearch.visibility = View.GONE
+                        binding?.progressBar?.visibility = View.GONE
+                        binding?.emptySearch?.visibility = View.GONE
                         searchAdapter.setSearch(searchResult.data)
                     }
                     is Resource.Error -> {
-                        binding.progressBar.visibility = View.GONE
-                        binding.emptySearch.visibility = View.VISIBLE
-                        binding.emptySearch.text = searchResult.message
+                        binding?.progressBar?.visibility = View.GONE
+                        binding?.emptySearch?.visibility = View.VISIBLE
+                        binding?.emptySearch?.text = searchResult.message
                     }
                 }
             }
             if(searchResult.data?.isEmpty() == true){
-                binding.emptySearch.visibility = View.VISIBLE
-                binding.emptySearch.text = activity?.getString(R.string.empty_search)
+                binding?.emptySearch?.visibility = View.VISIBLE
+                binding?.emptySearch?.text = activity?.getString(R.string.empty_search)
             }
 
         })
@@ -79,17 +79,17 @@ class SearchFragment : Fragment() {
             ) else intent.putExtra(DetailMovieActivity.EXTRA_TELEVISION, selectedData)
             startActivity(intent)
         }
-        with(binding.rvSearch) {
-            this.layoutManager = LinearLayoutManager(context)
-            this.setHasFixedSize(true)
-            this.adapter = searchAdapter
+        with(binding?.rvSearch) {
+            this?.layoutManager = LinearLayoutManager(context)
+            this?.setHasFixedSize(true)
+            this?.adapter = searchAdapter
         }
     }
 
     private fun searchManage() {
-        binding.search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        binding?.search?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
-                binding.progressBar.visibility = View.VISIBLE
+                binding?.progressBar?.visibility = View.VISIBLE
                 searchViewModel.setSearch(query)
                 return true
             }
@@ -99,6 +99,11 @@ class SearchFragment : Fragment() {
             }
 
         })
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding?.rvSearch?.adapter = null
     }
 
     override fun onDestroy() {

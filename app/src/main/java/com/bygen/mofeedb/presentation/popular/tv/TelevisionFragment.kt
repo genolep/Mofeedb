@@ -17,16 +17,16 @@ class TelevisionFragment : Fragment() {
     private val viewModel: TelevisionViewModel by viewModel()
 
     private var _fragmentTelevisionBinding: FragmentTelevisionBinding? = null
-    private val binding get() = _fragmentTelevisionBinding!!
+    private val binding get() = _fragmentTelevisionBinding
     private lateinit var televisionAdapter: TelevisionAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): View? {
         _fragmentTelevisionBinding =
             FragmentTelevisionBinding.inflate(layoutInflater, container, false)
-        return binding.root
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -42,19 +42,19 @@ class TelevisionFragment : Fragment() {
             if (televisions != null) {
                 when (televisions) {
                     is Resource.Loading -> {
-                        binding.progressBar.visibility = View.VISIBLE
-                        binding.tvError.visibility = View.GONE
+                        binding?.progressBar?.visibility = View.VISIBLE
+                        binding?.tvError?.visibility = View.GONE
 
                     }
                     is Resource.Success -> {
-                        binding.progressBar.visibility = View.GONE
-                        binding.tvError.visibility = View.GONE
+                        binding?.progressBar?.visibility = View.GONE
+                        binding?.tvError?.visibility = View.GONE
 
                         televisionAdapter.setTelevision(televisions.data)
                     }
                     is Resource.Error -> {
-                        binding.progressBar.visibility = View.GONE
-                        binding.tvError.text = televisions.message
+                        binding?.progressBar?.visibility = View.GONE
+                        binding?.tvError?.text = televisions.message
 
                     }
                 }
@@ -69,16 +69,19 @@ class TelevisionFragment : Fragment() {
             intent.putExtra(DetailMovieActivity.EXTRA_TELEVISION, selectedData)
             startActivity(intent)
         }
-        with(binding.rvTelevision) {
-            this.layoutManager = LinearLayoutManager(context)
-            this.setHasFixedSize(true)
-            this.adapter = televisionAdapter
+        with(binding?.rvTelevision) {
+            this?.layoutManager = LinearLayoutManager(context)
+            this?.setHasFixedSize(true)
+            this?.adapter = televisionAdapter
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding?.rvTelevision?.adapter = null
         _fragmentTelevisionBinding = null
+
     }
+
 
 }
