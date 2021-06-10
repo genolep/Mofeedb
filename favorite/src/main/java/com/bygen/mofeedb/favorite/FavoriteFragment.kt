@@ -13,6 +13,7 @@ import com.bygen.mofeedb.di.favoriteModule
 import com.bygen.mofeedb.presentation.detail.DetailMovieActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.context.loadKoinModules
+import org.koin.core.context.unloadKoinModules
 
 class FavoriteFragment : Fragment() {
     private val favoriteViewModel: FavoriteViewModel by viewModel()
@@ -62,7 +63,6 @@ class FavoriteFragment : Fragment() {
 
     private fun setupRecycler() {
         videoAdapter = FavoriteAdapter()
-        val notVideoAdapter = FavoriteAdapter()
         videoAdapter.onItemClick = { selectedData ->
             val intent = Intent(activity, DetailMovieActivity::class.java)
             if (selectedData.isMovie) intent.putExtra(
@@ -77,6 +77,7 @@ class FavoriteFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _fragmentMovieBinding = null
+        unloadKoinModules(favoriteModule)
     }
 
 }
