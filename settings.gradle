@@ -1,0 +1,4 @@
+rootProject.name = "Mofeedb"
+include ':app'
+include ':core'
+include ':favorite'

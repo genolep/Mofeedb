@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">Mofeedb</string>
+    <string name="title_activity_detail_movie">DetailMovieActivity</string>
+    <string name="list_show">List Show</string>
+    <string name="detail_show">Detail Show</string>
+    <string name="movies">Movies</string>
+    <string name="tvshows">TV Shows</string>
+    <string name="title_name">Title</string>
+    <string name="release">Release</string>
+    <string name="genre">Genre</string>
+    <string name="overview">Overview</string>
+    <string name="content_rating">Rating</string>
+    <string name="duration">Duration</string>
+    <string name="watch">Watch Trailer</string>
+    <string name="poster">Poster</string>
+    <string name="tagline">Tagline</string>
+    <string name="vote_rating">Votes</string>
+    <string name="duration_convert">%1s Minute</string>
+    <string name="favorite">Favorite</string>
+    <string name="list_favorite">List Favorite</string>
+    <string name="error">Something wrong, check your connection</string>
+    <string name="favorited">%1s Added to Favorite</string>
+    <string name="unfavorite">%1s Removed from Favorite</string>
+    <string name="empty_favorite">Favorite will be added here</string>
+    <string name="error_load">Welp.. Something Went Wrong</string>
+    <string name="popular">Popular</string>
+    <string name="search">Search</string>
+    <string name="Tags">Type</string>
+    <string name="search_hint">Search Movies, TV</string>
+    <string name="empty_search">Search not found</string>
+    <string name="title_favorite">Favorite</string>
+</resources>

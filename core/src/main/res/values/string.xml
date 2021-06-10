@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_name">Title</string>
+    <string name="release">Release</string>
+    <string name="vote_rating">Votes</string>
+    <string name="Tags">Type</string>
+    <string name="movies">Movies</string>
+    <string name="tvshows">TV Shows</string>
+</resources>
