@@ -1,6 +1,8 @@
 package com.bygen.mofeedb.presentation.detail
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -54,10 +56,17 @@ class DetailMovieActivity : AppCompatActivity() {
 
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
-        return super.onSupportNavigateUp()
-
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            android.R.id.home -> {
+                val intent = Intent(NavUtils.getParentActivityIntent(this))
+                intent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
+                startActivity(intent)
+                finish()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun populateMovieTv(detail: Resource<MovieTv>) {
