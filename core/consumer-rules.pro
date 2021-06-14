@@ -23,6 +23,9 @@
 # Ignore JSR 305 annotations for embedding nullability information.
 -dontwarn javax.annotation.**
 
+-dontwarn okhttp3.internal.platform.ConscryptPlatform
+-dontwarn org.conscrypt.ConscryptHostnameVerifier
+
 # Guarded by a NoClassDefFoundError try/catch and only used when on the classpath.
 -dontwarn kotlin.Unit
 
