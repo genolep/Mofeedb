@@ -6,4 +6,5 @@
     <string name="Tags">Type</string>
     <string name="movies">Movies</string>
     <string name="tvshows">TV Shows</string>
+    <string name="poster">Poster</string>
 </resources>

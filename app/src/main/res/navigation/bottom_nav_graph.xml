@@ -20,4 +20,5 @@
         android:name="com.bygen.mofeedb.favorite.FavoriteFragment"
         android:label="FavoriteFragment"
         tools:layout="@layout/fragment_favorite_movie"/>
+
 </navigation>

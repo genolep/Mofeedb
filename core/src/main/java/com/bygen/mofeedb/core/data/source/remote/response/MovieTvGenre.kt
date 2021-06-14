@@ -4,6 +4,6 @@ import com.google.gson.annotations.SerializedName
 
 data class MovieTvGenre(
 
-    @field:SerializedName("name")
+    @SerializedName("name")
     val name: String
 )

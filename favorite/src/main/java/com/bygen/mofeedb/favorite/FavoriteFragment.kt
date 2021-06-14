@@ -64,6 +64,7 @@ class FavoriteFragment : Fragment() {
     private fun setupRecycler() {
         videoAdapter = FavoriteAdapter()
         videoAdapter.onItemClick = { selectedData ->
+
             val intent = Intent(activity, DetailMovieActivity::class.java)
             if (selectedData.isMovie) intent.putExtra(
                 DetailMovieActivity.EXTRA_MOVIE,

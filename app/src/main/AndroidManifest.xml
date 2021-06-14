@@ -14,11 +14,7 @@
             android:name="com.bygen.mofeedb.presentation.detail.DetailMovieActivity"
             android:label="@string/detail_show"
             android:parentActivityName=".presentation.HomeActivity"
-            android:theme="@style/Theme.Mofeedb.NoActionBar" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".presentation.HomeActivity" />
-        </activity>
+            android:theme="@style/Theme.Mofeedb.NoActionBar" />
         <activity android:name=".presentation.HomeActivity"
             android:theme="@style/Theme.Mofeedb.NoActionBar"/>
         <activity android:name=".presentation.SplashActivity"

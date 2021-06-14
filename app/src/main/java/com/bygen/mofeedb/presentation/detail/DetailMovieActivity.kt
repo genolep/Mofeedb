@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NavUtils
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.bygen.mofeedb.R
@@ -50,6 +51,12 @@ class DetailMovieActivity : AppCompatActivity() {
             })
 
         }
+
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return super.onSupportNavigateUp()
 
     }
 
@@ -114,7 +121,6 @@ class DetailMovieActivity : AppCompatActivity() {
         }
     }
 
-
     private fun setFavoriteState(state: Boolean) {
         if (state) {
             contentBinding.fabFavorite.setImageResource(R.drawable.ic_favorite_red_24)
@@ -127,5 +133,4 @@ class DetailMovieActivity : AppCompatActivity() {
         const val EXTRA_MOVIE = "extra_movie"
         const val EXTRA_TELEVISION = "extra_television"
     }
-
 }

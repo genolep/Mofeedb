@@ -21,6 +21,10 @@ class HomeActivity : AppCompatActivity() {
         NavigationUI.setupWithNavController(binding.bottomNav,navController)
     }
 
+    override fun onResume() {
+        super.onResume()
+    }
+
 
 
 }

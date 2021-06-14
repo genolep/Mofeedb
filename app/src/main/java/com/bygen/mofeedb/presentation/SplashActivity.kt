@@ -12,6 +12,7 @@ class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val timeDelay = 100L
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
         Handler(Looper.getMainLooper()).postDelayed({
@@ -20,7 +21,4 @@ class SplashActivity : AppCompatActivity() {
         }, timeDelay)
     }
 
-    companion object {
-        private const val timeDelay = 1000L
-    }
 }

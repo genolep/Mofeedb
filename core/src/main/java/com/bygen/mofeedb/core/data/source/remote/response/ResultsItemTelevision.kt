@@ -5,25 +5,25 @@ import com.google.gson.annotations.SerializedName
 
 data class ResultsItemTelevision(
 
-    @field:SerializedName("first_air_date")
+    @SerializedName("first_air_date")
     val firstAirDate: String,
 
-    @field:SerializedName("poster_path")
+    @SerializedName("poster_path")
     val posterPath: String,
 
-    @field:SerializedName("vote_average")
+    @SerializedName("vote_average")
     val voteAverage: Double,
 
-    @field:SerializedName("name")
+    @SerializedName("name")
     val name: String,
 
-    @field:SerializedName("id")
+    @SerializedName("id")
     val id: Int,
 
     )
 
 data class PopularTvResponse(
 
-    @field:SerializedName("results")
+    @SerializedName("results")
     val results: List<ResultsItemTelevision>,
     )
