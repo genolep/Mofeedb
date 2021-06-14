@@ -4,9 +4,7 @@
     <color name="blue_500">#151c25</color>
     <color name="blue_700">#f1b814</color>
     <color name="orange_200">#FFE082</color>
-    <color name="orange_700">#FFC107</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="placeholder">#6FB6B6B6</color>
 </resources>
 
